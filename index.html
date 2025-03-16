@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </div>
+            </label>
+        </div>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Wecome to My Portfolio</h1>
+            <p>Hayden Cahoon</p>
+            <a href="#projects" class="cta-button">
+                My Work <i class="fas fa-arrow-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I first discovered coding in 5th grade when I had a boot cast and couldn’t go outside for recess. Stuck in the library, I stumbled upon Scratch on scratch.mit.edu, and that’s when my journey into programming began. The following year, in middle school, we had a tech class where we were introduced to Scratch—but I already knew the ins and outs of it. So, I decided to explore Python on my own.
+
+                    By 7th grade, our tech class focused on HTML, but I had already spent the summer teaching myself how to build websites. Over time, I expanded my skills to include CSS, JavaScript, PHP, and MySQL, constantly learning and building new projects along the way. My passion for coding has only grown, and I’m excited to continue developing my skills and creating new things.
+                    
+                    </p>
+                <div class="skills">
+                    <span><i class="fab fa-html5"></i> HTML</span>
+                    <span><i class="fab fa-css3-alt"></i> CSS</span>
+                    <span><i class="fab fa-js"></i> JavaScript</span>
+                    <span><i class="fab fa-php" style="color: #6f42c1;"></i> PHP</span>
+                    <span><i class="fas fa-database" style="color: #d9534f;"></i> MySQL</span>
+                    <span><i class="fab fa-python" style="color: #306998;"></i> Python</span>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="profile.jpg" alt="Profile Picture">
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>My Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <img src="placeholder.jpg" alt="Project 1">
+                <h3>Project 1</h3>
+                <p>Placeholder text</p>
+                <a href="#" class="project-link">View Project</a>
+            </div>
+            <div class="project-card">
+                <img src="placeholder.jpg" alt="Project 2">
+                <h3>Project 2</h3>
+                <p>Placeholder text</p>
+                <a href="#" class="project-link">View Project</a>
+            </div>
+            <div class="project-card">
+                <img src="placeholder.jpg" alt="Project 3">
+                <h3>Project 3</h3>
+                <p>Placeholder text</p>
+                <a href="#" class="project-link">View Project</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Get in Touch</h2>
+        <div class="contact-content">
+            <form class="contact-form">
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Message" required></textarea>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
