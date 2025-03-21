@@ -92,17 +92,16 @@ body {
     transform: translateY(-50%);
     font-size: 14px;
     transition: .4s;
+    color: var(--text-color);
 }
 
 .slider .fa-sun {
     left: 8px;
-    color: #f1c40f;
     opacity: 1;
 }
 
 .slider .fa-moon {
     right: 8px;
-    color: #f1c40f;
     opacity: 0;
 }
 
@@ -409,7 +408,7 @@ input:checked + .slider .fa-moon {
 footer {
     text-align: center;
     padding: 2rem;
-    background: #2c3e50;
+    background: #3498db;
     color: white;
 }
 
