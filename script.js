@@ -85,4 +85,48 @@ if (currentTheme) {
     }
 }
 
-toggleSwitch.addEventListener('change', switchTheme); 
+toggleSwitch.addEventListener('change', switchTheme);
+
+// Scrollbar and To Top Button
+const toTopButton = document.getElementById('to-top');
+let lastScrollTop = 0;
+
+window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Show/hide to-top button
+    if (scrollTop > 300) {
+        toTopButton.classList.add('visible');
+    } else {
+        toTopButton.classList.remove('visible');
+    }
+
+    lastScrollTop = scrollTop;
+});
+
+// Smooth scroll to top
+toTopButton.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Project Cards Dropdown
+document.addEventListener('DOMContentLoaded', () => {
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+        const header = card.querySelector('.project-header');
+        header.addEventListener('click', () => {
+            // Close all other cards
+            projectCards.forEach(otherCard => {
+                if (otherCard !== card) {
+                    otherCard.classList.remove('active');
+                }
+            });
+            // Toggle current card
+            card.classList.toggle('active');
+        });
+    });
+}); 
