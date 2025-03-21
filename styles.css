@@ -137,6 +137,14 @@ input:checked + .slider .fa-moon {
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-image {
+    height: 2rem;
+    width: auto;
 }
 
 .nav-links {
