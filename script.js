@@ -129,4 +129,20 @@ document.addEventListener('DOMContentLoaded', () => {
             card.classList.toggle('active');
         });
     });
-}); 
+
+
+
+
+
+
+
+
+
+});    });        projectsSection.scrollIntoView({ behavior: "smooth" }); // Smooth scroll to the Projects section        event.preventDefault(); // Prevent default anchor behavior    ctaButton.addEventListener("click", (event) => {    const projectsSection = document.querySelector("#projects");    const ctaButton = document.querySelector(".cta-button");    const ctaButton = document.querySelector(".cta-button");
+    const projectsSection = document.querySelector("#projects");
+
+    ctaButton.addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent default anchor behavior
+        projectsSection.scrollIntoView({ behavior: "smooth" }); // Smooth scroll to the Projects section
+    });
+});
