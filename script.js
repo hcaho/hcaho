@@ -12,7 +12,7 @@ burger.addEventListener('click', () => {
         if (link.style.animation) {
             link.style.animation = '';
         } else {
-            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+            link.style.animation = `navLinkFade 0.5s ease forwards ${(index / navLinks.length + 0.3)}s`;
         }
     });
 
@@ -52,14 +52,28 @@ sections.forEach(section => {
     observer.observe(section);
 });
 
-// Form submission handling
+// Contact form submission logic
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        // Add your form submission logic here
-        alert('Thank you for your message! I will get back to you soon.');
-        contactForm.reset();
+        const formData = new FormData(contactForm);
+        fetch('https://example.com/submit-form', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            } else {
+                alert('There was an issue submitting your message. Please try again later.');
+            }
+        })
+        .catch(error => {
+            console.error('Error submitting the form:', error);
+            alert('An error occurred. Please try again later.');
+        });
     });
 }
 
@@ -73,76 +87,68 @@ function switchTheme(e) {
     } else {
         document.documentElement.setAttribute('data-theme', 'light');
         localStorage.setItem('theme', 'light');
-    }    
+    }
 }
 
 // Check for saved theme preference
 const currentTheme = localStorage.getItem('theme');
 if (currentTheme) {
     document.documentElement.setAttribute('data-theme', currentTheme);
-    if (currentTheme === 'dark') {
+    if (currentTheme === 'dark' && toggleSwitch) {
         toggleSwitch.checked = true;
     }
 }
 
-toggleSwitch.addEventListener('change', switchTheme);
+if (toggleSwitch) {
+    toggleSwitch.addEventListener('change', switchTheme);
+}
 
-// Scrollbar and To Top Button
+// "Back to Top" button functionality
 const toTopButton = document.getElementById('to-top');
-let lastScrollTop = 0;
-
-window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // Show/hide to-top button
-    if (scrollTop > 300) {
-        toTopButton.classList.add('visible');
-    } else {
-        toTopButton.classList.remove('visible');
-    }
-
-    lastScrollTop = scrollTop;
-});
-
-// Smooth scroll to top
-toTopButton.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+if (toTopButton) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            toTopButton.classList.add('visible');
+        } else {
+            toTopButton.classList.remove('visible');
+        }
     });
-});
 
-// Project Cards Dropdown
-document.addEventListener('DOMContentLoaded', () => {
-    const projectCards = document.querySelectorAll('.project-card');
-    
-    projectCards.forEach(card => {
-        const header = card.querySelector('.project-header');
-        header.addEventListener('click', () => {
-            // Close all other cards
-            projectCards.forEach(otherCard => {
-                if (otherCard !== card) {
-                    otherCard.classList.remove('active');
-                }
-            });
-            // Toggle current card
-            card.classList.toggle('active');
+    toTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
     });
+}
 
+// Project card toggle functionality
+const projectCards = document.querySelectorAll('.project-card');
+if (projectCards.length > 0) {
+    function toggleCard(card) {
+        projectCards.forEach(otherCard => {
+            if (otherCard !== card) {
+                otherCard.classList.remove('active');
+            }
+        });
+        card.classList.toggle('active');
+    }
 
-
-
-
-
-
-
-
-});    });        projectsSection.scrollIntoView({ behavior: "smooth" }); // Smooth scroll to the Projects section        event.preventDefault(); // Prevent default anchor behavior    ctaButton.addEventListener("click", (event) => {    const projectsSection = document.querySelector("#projects");    const ctaButton = document.querySelector(".cta-button");    const ctaButton = document.querySelector(".cta-button");
-    const projectsSection = document.querySelector("#projects");
-
-    ctaButton.addEventListener("click", (event) => {
-        event.preventDefault(); // Prevent default anchor behavior
-        projectsSection.scrollIntoView({ behavior: "smooth" }); // Smooth scroll to the Projects section
+    projectCards.forEach(card => {
+        const header = card.querySelector('.project-header');
+        header.addEventListener('click', () => toggleCard(card));
     });
-});
+}
+
+// CTA button functionality
+const ctaButton = document.querySelector(".cta-button");
+const projectsSection = document.querySelector("#projects");
+
+if (ctaButton && projectsSection) {
+    ctaButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        projectsSection.scrollIntoView({ behavior: "smooth" });
+    });
+} else {
+    console.warn('Warning: Either .cta-button or #projects element is missing in the DOM.');
+}
